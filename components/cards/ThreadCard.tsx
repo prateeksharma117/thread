@@ -86,26 +86,26 @@ const ThreadCard = ({
                             <div className=" mt-5 flex flex-col gap-3">
                                 <div className=" flex gap-5">
                                     <IoSnowOutline
-                                        color="#fff"
-                                        size={20}
+                                        color="#697c89"
+                                        size={18}
                                         className=" cursor-pointer"
                                     />
                                     <Link href={`/thread/${id}`}>
                                         <SlBubble
                                             className=" cursor-pointer"
-                                            color="white"
-                                            size={20}
+                                            color="#697c89"
+                                            size={18}
                                         />
                                     </Link>
                                     <SlActionRedo
                                         className=" cursor-pointer"
-                                        color="white"
-                                        size={20}
+                                        color="#697c89"
+                                        size={18}
                                     />
                                     <SlPaperPlane
                                         className=" cursor-pointer"
-                                        color="white"
-                                        size={20}
+                                        color="#697c89"
+                                        size={18}
                                     />
                                 </div>
                                 {
