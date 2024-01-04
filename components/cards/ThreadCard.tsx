@@ -6,6 +6,7 @@ import { SlBubble } from "react-icons/sl";
 import { SlActionRedo } from "react-icons/sl";
 import { SlPaperPlane } from "react-icons/sl";
 import { useState } from "react";
+import { formatDateString } from "@/lib/utils";
 
 interface Props {
     id: string;
@@ -47,7 +48,7 @@ const ThreadCard = ({
 
     return (
         <>
-            <article className={`flex w-full flex-col rounded-xl${isComment?' px-0 xs:px-7':'bg-dark-2 p-7'}`}>
+            <article className={`flex w-full flex-col rounded-xl${isComment ? ' px-0 xs:px-7' : 'bg-dark-2 p-7'}`}>
                 <div className=" flex items-start justify-between">
                     <div className=" flex w-full flex-1 flex-row gap-4">
                         <div className=" flex flex-col items-center">
@@ -59,7 +60,7 @@ const ThreadCard = ({
                                     src={author?.image}
                                     alt="profile Image"
                                     fill
-                                    className=" cursor-pointer rounded-full"
+                                    className=" cursor-pointer rounded-full object-cover"
                                 />
                             </Link>
                             <div className="thread-card_bar" />
@@ -72,14 +73,14 @@ const ThreadCard = ({
                             </Link>
                             <div>
                                 {image && (
-                                <>
-                                    <img
-                                        src={image}
-                                        alt="profile Image"
-                                        className="mt-3 cursor-pointer rounded-md object-cover h-[12rem]"
-                                    />
-                                </>
-                            )}
+                                    <>
+                                        <img
+                                            src={image}
+                                            alt="profile Image"
+                                            className="mt-3 cursor-pointer rounded-md object-cover h-[12rem]"
+                                        />
+                                    </>
+                                )}
                             </div>
                             <p className=" mt-2 text-small-regular text-light-2">{content}</p>
                             <div className=" mt-5 flex flex-col gap-3">
@@ -108,7 +109,7 @@ const ThreadCard = ({
                                     />
                                 </div>
                                 {
-                                    isComment&& comments.length>0&&(
+                                    isComment && comments.length > 0 && (
                                         <Link href={`/thread/${id}`}>
                                             <p className=" mt-1 text-subtle-medium text-gray-1">
                                                 replies
@@ -120,6 +121,22 @@ const ThreadCard = ({
                         </div>
                     </div>
                 </div>
+                {
+                    !isComment && community && (
+                        <Link href={`/communities/${community.id}`} className=" mt-5 text-gray-1 flex items-center">
+                            <p>
+                                {formatDateString(createdAt)}{" "}-{community.name} Community
+                            </p>
+                            <Image
+                                src={community.image}
+                                alt={community.name}
+                                width={20}
+                                height={20}
+                                className=" ml-1 rounded-full object-cover"
+                            />
+                        </Link>
+                    )
+                }
             </article >
         </>
     );

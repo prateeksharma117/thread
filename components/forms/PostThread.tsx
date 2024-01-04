@@ -21,6 +21,7 @@ import { AiOutlineCloudUpload } from "react-icons/ai"
 import { MdDelete } from "react-icons/md"
 import axios from "axios";
 import { createThread } from "@/lib/actions/thread.actions";
+import { useOrganization } from "@clerk/nextjs";
 /* import { updateUser } from "@/lib/actions/user.actions";
 import { userValidation } from "@/lib/validation/validation "; */
 
@@ -46,6 +47,7 @@ const PostThread = ({ userId }: { userId: string }) => {
 
     const router = useRouter()
     const pathname = usePathname()
+    const {organization}=useOrganization()
     const [wrongImageType, setWrongImageType] = useState(false)
     const [imageAsset, setImageAsset] = useState<ImageAsset | null>(null);
     const [file, setFile] = useState(null);
@@ -115,7 +117,7 @@ const PostThread = ({ userId }: { userId: string }) => {
         text:values.thread,
         image:imageLink,
         author:userId,
-        communityId:null,
+        communityId:organization?organization.id:null,
         path:pathname
        })
 

@@ -20,13 +20,14 @@ const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
         <>
             <article className=" user-card">
                 <div className="user-card-avatar">
-                    <Image
-                        src={imgUrl}
-                        alt="logo"
-                        width={48}
-                        height={48}
-                        className=" rounded-full"
-                    />
+                    <div className=" relative h-12 w-12">
+                        <Image
+                            src={imgUrl}
+                            alt="logo"
+                            fill
+                            className=" rounded-full object-cover"
+                        />
+                    </div>
                 </div>
 
                 <div className=" flex-1 text-ellipsis">

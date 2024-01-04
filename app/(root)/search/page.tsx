@@ -1,7 +1,5 @@
 import UserCard from "@/components/cards/UserCard"
-import ProfileHeader from "@/components/shared/ProfileHeader"
-import ThreadsTab from "@/components/shared/ThreadsTab"
-import { profileTabs } from "@/constants"
+import Searchbar from "@/components/shared/Searchbar"
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions"
 import { currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
@@ -27,7 +25,7 @@ const page = async () => {
             <section>
                 <h1 className=" mb-10 head-text">search</h1>
 
-
+                <Searchbar routeType='search' />
 
                 <div className="mt-14 flex flex-col gap-9">
                     {result.users.length === 0 ? (
